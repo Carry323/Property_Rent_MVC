@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a59ee0be1ad348f5b2d56bf46bfca692" Name="Diagram1">
+        <EntityTypeShape EntityType="Property_Rental_ManagementModel.Apartment" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_ManagementModel.Appointment" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_ManagementModel.Broker" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_ManagementModel.Customer" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_ManagementModel.Leas" Width="1.5" PointX="10.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_ManagementModel.Owner" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_ManagementModel.sysdiagram" Width="1.5" PointX="1.125" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_ManagementModel.Tenant" Width="1.5" PointX="12.75" PointY="9.625" IsExpanded="true" />
+        <AssociationConnector Association="Property_Rental_ManagementModel.FK_Appointments_Apartments" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_ManagementModel.FK_Leases_Apartments" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_ManagementModel.FK_Appointments_Brokers" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_ManagementModel.FK_Appointments_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_ManagementModel.FK_Leases_Brokers" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_ManagementModel.FK_Leases_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_ManagementModel.FK_Leases_Owners" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_ManagementModel.FK_Tenants_Leases" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_ManagementModel.BrokersApartments" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_ManagementModel.BrokersCustomers" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_ManagementModel.BrokersOwners" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

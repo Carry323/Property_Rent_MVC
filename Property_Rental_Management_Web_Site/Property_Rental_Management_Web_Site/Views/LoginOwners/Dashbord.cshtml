@@ -1,0 +1,61 @@
+﻿@model Property_Rental_Management_Web_Site.Models.Owner
+
+@{
+    ViewBag.Title = "Dashbord";
+}
+
+<h2>Dashbord</h2>
+
+<div>
+    <h4>Owner</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <h4>
+            @Session["OwnerEmail"]
+        </h4>
+        <dd>
+            @Html.DisplayFor(model => model.OwnerEmail)
+        </dd>
+        @*<dt>
+            @Html.DisplayNameFor(model => model.OwnerFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerEmail)
+        </dd>*@
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @*<input type="submit" value="Show your leases" class="btn btn-default" />*@
+                <a href="@Url.Action("Create", "BrokerApartments")" class="btn btn-primary btn-lg">Create new listing</a>
+                @*<a href="@Url.Action("Detals", "LoginBroker")">Show my appartment</a>*@
+            </div>
+        </div>
+
+        <div>
+            <a href="@Url.Action("LogOut", "LoginOwner")">LogOut</a>
+
+        </div>
+
+
+    </dl>
+</div>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OwnerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

@@ -1,0 +1,801 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Property_Rental_ManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Apartments">
+          <Key>
+            <PropertyRef Name="ApartmentId" />
+          </Key>
+          <Property Name="ApartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApartmentNumber" Type="int" Nullable="false" />
+          <Property Name="StreetName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Province" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Floor" Type="int" />
+          <Property Name="NumberOfBedrooms" Type="int" Nullable="false" />
+          <Property Name="NumberOfBathrooms" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Appointments">
+          <Key>
+            <PropertyRef Name="AppointmentId" />
+          </Key>
+          <Property Name="AppointmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="BrokerId" Type="int" Nullable="false" />
+          <Property Name="ApartmentId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Brokers">
+          <Key>
+            <PropertyRef Name="BrokerId" />
+          </Key>
+          <Property Name="BrokerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrokerFirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BrokerLastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BrokerEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BrokerPhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BrokersApartments">
+          <Key>
+            <PropertyRef Name="BrokerId" />
+            <PropertyRef Name="ApartmentId" />
+          </Key>
+          <Property Name="BrokerId" Type="int" Nullable="false" />
+          <Property Name="ApartmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BrokersCustomers">
+          <Key>
+            <PropertyRef Name="BrokerId" />
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="BrokerId" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BrokersOwners">
+          <Key>
+            <PropertyRef Name="BrokerId" />
+            <PropertyRef Name="OwnerId" />
+          </Key>
+          <Property Name="BrokerId" Type="int" Nullable="false" />
+          <Property Name="OwnerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerFirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerLastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerPhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Leases">
+          <Key>
+            <PropertyRef Name="LeaseId" />
+          </Key>
+          <Property Name="LeaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentDate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BrokerId" Type="int" Nullable="false" />
+          <Property Name="OwnerId" Type="int" Nullable="false" />
+          <Property Name="MonthlyRate" Type="int" Nullable="false" />
+          <Property Name="PaymentMethod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fine" Type="int" />
+          <Property Name="StartLeaseDate" Type="date" Nullable="false" />
+          <Property Name="EndLeaseDate" Type="date" Nullable="false" />
+          <Property Name="ApartmentId" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+        </EntityType>
+        <EntityType Name="Owners">
+          <Key>
+            <PropertyRef Name="OwnerId" />
+          </Key>
+          <Property Name="OwnerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OwnerFirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OwnerLastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OwnerEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OwnerPhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tenants">
+          <Key>
+            <PropertyRef Name="TenantId" />
+          </Key>
+          <Property Name="TenantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LeaseId" Type="int" Nullable="false" />
+          <Property Name="TenantFirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenantLastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenantEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenantPhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Appointments_Apartments">
+          <End Role="Apartments" Type="Self.Apartments" Multiplicity="1" />
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartments">
+              <PropertyRef Name="ApartmentId" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="ApartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Appointments_Brokers">
+          <End Role="Brokers" Type="Self.Brokers" Multiplicity="1" />
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brokers">
+              <PropertyRef Name="BrokerId" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="BrokerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Appointments_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BrokersApartments_Apartments">
+          <End Role="Apartments" Type="Self.Apartments" Multiplicity="1" />
+          <End Role="BrokersApartments" Type="Self.BrokersApartments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartments">
+              <PropertyRef Name="ApartmentId" />
+            </Principal>
+            <Dependent Role="BrokersApartments">
+              <PropertyRef Name="ApartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BrokersApartments_Brokers">
+          <End Role="Brokers" Type="Self.Brokers" Multiplicity="1" />
+          <End Role="BrokersApartments" Type="Self.BrokersApartments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brokers">
+              <PropertyRef Name="BrokerId" />
+            </Principal>
+            <Dependent Role="BrokersApartments">
+              <PropertyRef Name="BrokerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BrokersCustomers_Brokers">
+          <End Role="Brokers" Type="Self.Brokers" Multiplicity="1" />
+          <End Role="BrokersCustomers" Type="Self.BrokersCustomers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brokers">
+              <PropertyRef Name="BrokerId" />
+            </Principal>
+            <Dependent Role="BrokersCustomers">
+              <PropertyRef Name="BrokerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BrokersCustomers_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="BrokersCustomers" Type="Self.BrokersCustomers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="BrokersCustomers">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BrokersOwners_Brokers">
+          <End Role="Brokers" Type="Self.Brokers" Multiplicity="1" />
+          <End Role="BrokersOwners" Type="Self.BrokersOwners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brokers">
+              <PropertyRef Name="BrokerId" />
+            </Principal>
+            <Dependent Role="BrokersOwners">
+              <PropertyRef Name="BrokerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BrokersOwners_Owners">
+          <End Role="Owners" Type="Self.Owners" Multiplicity="1" />
+          <End Role="BrokersOwners" Type="Self.BrokersOwners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owners">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="BrokersOwners">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leases_Apartments">
+          <End Role="Apartments" Type="Self.Apartments" Multiplicity="1" />
+          <End Role="Leases" Type="Self.Leases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartments">
+              <PropertyRef Name="ApartmentId" />
+            </Principal>
+            <Dependent Role="Leases">
+              <PropertyRef Name="ApartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leases_Brokers">
+          <End Role="Brokers" Type="Self.Brokers" Multiplicity="1" />
+          <End Role="Leases" Type="Self.Leases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brokers">
+              <PropertyRef Name="BrokerId" />
+            </Principal>
+            <Dependent Role="Leases">
+              <PropertyRef Name="BrokerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leases_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Leases" Type="Self.Leases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Leases">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leases_Owners">
+          <End Role="Owners" Type="Self.Owners" Multiplicity="1" />
+          <End Role="Leases" Type="Self.Leases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owners">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="Leases">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tenants_Leases">
+          <End Role="Leases" Type="Self.Leases" Multiplicity="1" />
+          <End Role="Tenants" Type="Self.Tenants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Leases">
+              <PropertyRef Name="LeaseId" />
+            </Principal>
+            <Dependent Role="Tenants">
+              <PropertyRef Name="LeaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Property_Rental_ManagementModelStoreContainer">
+          <EntitySet Name="Apartments" EntityType="Self.Apartments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Appointments" EntityType="Self.Appointments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brokers" EntityType="Self.Brokers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BrokersApartments" EntityType="Self.BrokersApartments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BrokersCustomers" EntityType="Self.BrokersCustomers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BrokersOwners" EntityType="Self.BrokersOwners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Leases" EntityType="Self.Leases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Owners" EntityType="Self.Owners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tenants" EntityType="Self.Tenants" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Appointments_Apartments" Association="Self.FK_Appointments_Apartments">
+            <End Role="Apartments" EntitySet="Apartments" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Appointments_Brokers" Association="Self.FK_Appointments_Brokers">
+            <End Role="Brokers" EntitySet="Brokers" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Appointments_Customers" Association="Self.FK_Appointments_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BrokersApartments_Apartments" Association="Self.FK_BrokersApartments_Apartments">
+            <End Role="Apartments" EntitySet="Apartments" />
+            <End Role="BrokersApartments" EntitySet="BrokersApartments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BrokersApartments_Brokers" Association="Self.FK_BrokersApartments_Brokers">
+            <End Role="Brokers" EntitySet="Brokers" />
+            <End Role="BrokersApartments" EntitySet="BrokersApartments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BrokersCustomers_Brokers" Association="Self.FK_BrokersCustomers_Brokers">
+            <End Role="Brokers" EntitySet="Brokers" />
+            <End Role="BrokersCustomers" EntitySet="BrokersCustomers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BrokersCustomers_Customers" Association="Self.FK_BrokersCustomers_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="BrokersCustomers" EntitySet="BrokersCustomers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BrokersOwners_Brokers" Association="Self.FK_BrokersOwners_Brokers">
+            <End Role="Brokers" EntitySet="Brokers" />
+            <End Role="BrokersOwners" EntitySet="BrokersOwners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BrokersOwners_Owners" Association="Self.FK_BrokersOwners_Owners">
+            <End Role="Owners" EntitySet="Owners" />
+            <End Role="BrokersOwners" EntitySet="BrokersOwners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leases_Apartments" Association="Self.FK_Leases_Apartments">
+            <End Role="Apartments" EntitySet="Apartments" />
+            <End Role="Leases" EntitySet="Leases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leases_Brokers" Association="Self.FK_Leases_Brokers">
+            <End Role="Brokers" EntitySet="Brokers" />
+            <End Role="Leases" EntitySet="Leases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leases_Customers" Association="Self.FK_Leases_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Leases" EntitySet="Leases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leases_Owners" Association="Self.FK_Leases_Owners">
+            <End Role="Owners" EntitySet="Owners" />
+            <End Role="Leases" EntitySet="Leases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tenants_Leases" Association="Self.FK_Tenants_Leases">
+            <End Role="Leases" EntitySet="Leases" />
+            <End Role="Tenants" EntitySet="Tenants" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Property_Rental_ManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Apartment">
+          <Key>
+            <PropertyRef Name="ApartmentId" />
+          </Key>
+          <Property Name="ApartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApartmentNumber" Type="Int32" Nullable="false" />
+          <Property Name="StreetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Floor" Type="Int32" />
+          <Property Name="NumberOfBedrooms" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfBathrooms" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointments_Apartments" FromRole="Apartments" ToRole="Appointments" />
+          <NavigationProperty Name="Leases" Relationship="Self.FK_Leases_Apartments" FromRole="Apartments" ToRole="Leases" />
+          <NavigationProperty Name="Brokers" Relationship="Self.BrokersApartments" FromRole="Apartments" ToRole="Brokers" />
+        </EntityType>
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="AppointmentId" />
+          </Key>
+          <Property Name="AppointmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="BrokerId" Type="Int32" Nullable="false" />
+          <Property Name="ApartmentId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Apartment" Relationship="Self.FK_Appointments_Apartments" FromRole="Appointments" ToRole="Apartments" />
+          <NavigationProperty Name="Broker" Relationship="Self.FK_Appointments_Brokers" FromRole="Appointments" ToRole="Brokers" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Appointments_Customers" FromRole="Appointments" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="Broker">
+          <Key>
+            <PropertyRef Name="BrokerId" />
+          </Key>
+          <Property Name="BrokerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrokerFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BrokerLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BrokerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BrokerPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointments_Brokers" FromRole="Brokers" ToRole="Appointments" />
+          <NavigationProperty Name="Leases" Relationship="Self.FK_Leases_Brokers" FromRole="Brokers" ToRole="Leases" />
+          <NavigationProperty Name="Apartments" Relationship="Self.BrokersApartments" FromRole="Brokers" ToRole="Apartments" />
+          <NavigationProperty Name="Customers" Relationship="Self.BrokersCustomers" FromRole="Brokers" ToRole="Customers" />
+          <NavigationProperty Name="Owners" Relationship="Self.BrokersOwners" FromRole="Brokers" ToRole="Owners" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustomerLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustomerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustomerPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointments_Customers" FromRole="Customers" ToRole="Appointments" />
+          <NavigationProperty Name="Leases" Relationship="Self.FK_Leases_Customers" FromRole="Customers" ToRole="Leases" />
+          <NavigationProperty Name="Brokers" Relationship="Self.BrokersCustomers" FromRole="Customers" ToRole="Brokers" />
+        </EntityType>
+        <EntityType Name="Leas">
+          <Key>
+            <PropertyRef Name="LeaseId" />
+          </Key>
+          <Property Name="LeaseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BrokerId" Type="Int32" Nullable="false" />
+          <Property Name="OwnerId" Type="Int32" Nullable="false" />
+          <Property Name="MonthlyRate" Type="Int32" Nullable="false" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fine" Type="Int32" />
+          <Property Name="StartLeaseDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndLeaseDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ApartmentId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" />
+          <NavigationProperty Name="Apartment" Relationship="Self.FK_Leases_Apartments" FromRole="Leases" ToRole="Apartments" />
+          <NavigationProperty Name="Broker" Relationship="Self.FK_Leases_Brokers" FromRole="Leases" ToRole="Brokers" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Leases_Customers" FromRole="Leases" ToRole="Customers" />
+          <NavigationProperty Name="Owner" Relationship="Self.FK_Leases_Owners" FromRole="Leases" ToRole="Owners" />
+          <NavigationProperty Name="Tenants" Relationship="Self.FK_Tenants_Leases" FromRole="Leases" ToRole="Tenants" />
+        </EntityType>
+        <EntityType Name="Owner">
+          <Key>
+            <PropertyRef Name="OwnerId" />
+          </Key>
+          <Property Name="OwnerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OwnerFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OwnerLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OwnerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OwnerPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Leases" Relationship="Self.FK_Leases_Owners" FromRole="Owners" ToRole="Leases" />
+          <NavigationProperty Name="Brokers" Relationship="Self.BrokersOwners" FromRole="Owners" ToRole="Brokers" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tenant">
+          <Key>
+            <PropertyRef Name="TenantId" />
+          </Key>
+          <Property Name="TenantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LeaseId" Type="Int32" Nullable="false" />
+          <Property Name="TenantFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenantLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenantEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenantPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Leas" Relationship="Self.FK_Tenants_Leases" FromRole="Tenants" ToRole="Leases" />
+        </EntityType>
+        <Association Name="FK_Appointments_Apartments">
+          <End Role="Apartments" Type="Self.Apartment" Multiplicity="1" />
+          <End Role="Appointments" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartments">
+              <PropertyRef Name="ApartmentId" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="ApartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leases_Apartments">
+          <End Role="Apartments" Type="Self.Apartment" Multiplicity="1" />
+          <End Role="Leases" Type="Self.Leas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartments">
+              <PropertyRef Name="ApartmentId" />
+            </Principal>
+            <Dependent Role="Leases">
+              <PropertyRef Name="ApartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Appointments_Brokers">
+          <End Role="Brokers" Type="Self.Broker" Multiplicity="1" />
+          <End Role="Appointments" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brokers">
+              <PropertyRef Name="BrokerId" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="BrokerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Appointments_Customers">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Appointments" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leases_Brokers">
+          <End Role="Brokers" Type="Self.Broker" Multiplicity="1" />
+          <End Role="Leases" Type="Self.Leas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brokers">
+              <PropertyRef Name="BrokerId" />
+            </Principal>
+            <Dependent Role="Leases">
+              <PropertyRef Name="BrokerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leases_Customers">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Leases" Type="Self.Leas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Leases">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leases_Owners">
+          <End Role="Owners" Type="Self.Owner" Multiplicity="1" />
+          <End Role="Leases" Type="Self.Leas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owners">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="Leases">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tenants_Leases">
+          <End Role="Leases" Type="Self.Leas" Multiplicity="1" />
+          <End Role="Tenants" Type="Self.Tenant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Leases">
+              <PropertyRef Name="LeaseId" />
+            </Principal>
+            <Dependent Role="Tenants">
+              <PropertyRef Name="LeaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BrokersApartments">
+          <End Role="Apartments" Type="Self.Apartment" Multiplicity="*" />
+          <End Role="Brokers" Type="Self.Broker" Multiplicity="*" />
+        </Association>
+        <Association Name="BrokersCustomers">
+          <End Role="Brokers" Type="Self.Broker" Multiplicity="*" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+        </Association>
+        <Association Name="BrokersOwners">
+          <End Role="Brokers" Type="Self.Broker" Multiplicity="*" />
+          <End Role="Owners" Type="Self.Owner" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Property_Rental_ManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Apartments" EntityType="Self.Apartment" />
+          <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+          <EntitySet Name="Brokers" EntityType="Self.Broker" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Leases" EntityType="Self.Leas" />
+          <EntitySet Name="Owners" EntityType="Self.Owner" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tenants" EntityType="Self.Tenant" />
+          <AssociationSet Name="FK_Appointments_Apartments" Association="Self.FK_Appointments_Apartments">
+            <End Role="Apartments" EntitySet="Apartments" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leases_Apartments" Association="Self.FK_Leases_Apartments">
+            <End Role="Apartments" EntitySet="Apartments" />
+            <End Role="Leases" EntitySet="Leases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Appointments_Brokers" Association="Self.FK_Appointments_Brokers">
+            <End Role="Brokers" EntitySet="Brokers" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Appointments_Customers" Association="Self.FK_Appointments_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leases_Brokers" Association="Self.FK_Leases_Brokers">
+            <End Role="Brokers" EntitySet="Brokers" />
+            <End Role="Leases" EntitySet="Leases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leases_Customers" Association="Self.FK_Leases_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Leases" EntitySet="Leases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leases_Owners" Association="Self.FK_Leases_Owners">
+            <End Role="Owners" EntitySet="Owners" />
+            <End Role="Leases" EntitySet="Leases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tenants_Leases" Association="Self.FK_Tenants_Leases">
+            <End Role="Leases" EntitySet="Leases" />
+            <End Role="Tenants" EntitySet="Tenants" />
+          </AssociationSet>
+          <AssociationSet Name="BrokersApartments" Association="Self.BrokersApartments">
+            <End Role="Apartments" EntitySet="Apartments" />
+            <End Role="Brokers" EntitySet="Brokers" />
+          </AssociationSet>
+          <AssociationSet Name="BrokersCustomers" Association="Self.BrokersCustomers">
+            <End Role="Brokers" EntitySet="Brokers" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="BrokersOwners" Association="Self.BrokersOwners">
+            <End Role="Brokers" EntitySet="Brokers" />
+            <End Role="Owners" EntitySet="Owners" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Property_Rental_ManagementModelStoreContainer" CdmEntityContainer="Property_Rental_ManagementEntities">
+          <EntitySetMapping Name="Apartments">
+            <EntityTypeMapping TypeName="Property_Rental_ManagementModel.Apartment">
+              <MappingFragment StoreEntitySet="Apartments">
+                <ScalarProperty Name="ApartmentId" ColumnName="ApartmentId" />
+                <ScalarProperty Name="ApartmentNumber" ColumnName="ApartmentNumber" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="NumberOfBedrooms" ColumnName="NumberOfBedrooms" />
+                <ScalarProperty Name="NumberOfBathrooms" ColumnName="NumberOfBathrooms" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="Property_Rental_ManagementModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointments">
+                <ScalarProperty Name="AppointmentId" ColumnName="AppointmentId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="BrokerId" ColumnName="BrokerId" />
+                <ScalarProperty Name="ApartmentId" ColumnName="ApartmentId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brokers">
+            <EntityTypeMapping TypeName="Property_Rental_ManagementModel.Broker">
+              <MappingFragment StoreEntitySet="Brokers">
+                <ScalarProperty Name="BrokerId" ColumnName="BrokerId" />
+                <ScalarProperty Name="BrokerFirstName" ColumnName="BrokerFirstName" />
+                <ScalarProperty Name="BrokerLastName" ColumnName="BrokerLastName" />
+                <ScalarProperty Name="BrokerEmail" ColumnName="BrokerEmail" />
+                <ScalarProperty Name="BrokerPassword" ColumnName="BrokerPhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="Property_Rental_ManagementModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
+                <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
+                <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+                <ScalarProperty Name="CustomerPhoneNumber" ColumnName="CustomerPhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leases">
+            <EntityTypeMapping TypeName="Property_Rental_ManagementModel.Leas">
+              <MappingFragment StoreEntitySet="Leases">
+                <ScalarProperty Name="LeaseId" ColumnName="LeaseId" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="BrokerId" ColumnName="BrokerId" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="MonthlyRate" ColumnName="MonthlyRate" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="Fine" ColumnName="Fine" />
+                <ScalarProperty Name="StartLeaseDate" ColumnName="StartLeaseDate" />
+                <ScalarProperty Name="EndLeaseDate" ColumnName="EndLeaseDate" />
+                <ScalarProperty Name="ApartmentId" ColumnName="ApartmentId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Owners">
+            <EntityTypeMapping TypeName="Property_Rental_ManagementModel.Owner">
+              <MappingFragment StoreEntitySet="Owners">
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="OwnerFirstName" ColumnName="OwnerFirstName" />
+                <ScalarProperty Name="OwnerLastName" ColumnName="OwnerLastName" />
+                <ScalarProperty Name="OwnerEmail" ColumnName="OwnerEmail" />
+                <ScalarProperty Name="OwnerPhoneNumber" ColumnName="OwnerPhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Property_Rental_ManagementModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tenants">
+            <EntityTypeMapping TypeName="Property_Rental_ManagementModel.Tenant">
+              <MappingFragment StoreEntitySet="Tenants">
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+                <ScalarProperty Name="LeaseId" ColumnName="LeaseId" />
+                <ScalarProperty Name="TenantFirstName" ColumnName="TenantFirstName" />
+                <ScalarProperty Name="TenantLastName" ColumnName="TenantLastName" />
+                <ScalarProperty Name="TenantEmail" ColumnName="TenantEmail" />
+                <ScalarProperty Name="TenantPhoneNumber" ColumnName="TenantPhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="BrokersApartments" TypeName="Property_Rental_ManagementModel.BrokersApartments" StoreEntitySet="BrokersApartments">
+            <EndProperty Name="Apartments">
+              <ScalarProperty Name="ApartmentId" ColumnName="ApartmentId" />
+            </EndProperty>
+            <EndProperty Name="Brokers">
+              <ScalarProperty Name="BrokerId" ColumnName="BrokerId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="BrokersCustomers" TypeName="Property_Rental_ManagementModel.BrokersCustomers" StoreEntitySet="BrokersCustomers">
+            <EndProperty Name="Brokers">
+              <ScalarProperty Name="BrokerId" ColumnName="BrokerId" />
+            </EndProperty>
+            <EndProperty Name="Customers">
+              <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="BrokersOwners" TypeName="Property_Rental_ManagementModel.BrokersOwners" StoreEntitySet="BrokersOwners">
+            <EndProperty Name="Brokers">
+              <ScalarProperty Name="BrokerId" ColumnName="BrokerId" />
+            </EndProperty>
+            <EndProperty Name="Owners">
+              <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

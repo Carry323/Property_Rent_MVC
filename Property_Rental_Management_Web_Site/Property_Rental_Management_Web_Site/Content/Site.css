@@ -1,0 +1,132 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    position: relative;
+    width: 1140px;
+    margin: 0 auto;
+}
+
+.main {
+    /*width: 100%;*/
+    height: 800px;
+    background: url('../img/main.jpg') center center/cover no-repeat;
+    padding: 39px 0 62px 0;
+}
+
+.logo .logo_img {
+    display: block;
+    margin: 0 auto;
+}
+
+.logo .logo_text {
+    color: #fff;
+    font-family: "Roboto";
+    font-size:15px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 14px;
+}
+
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    margin-top: 53px;
+}
+
+.title {
+    color: #f9bf3b;
+    font-size: 41px;
+    font-weight: 900;
+    line-height: 24px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.main .main_text {
+    color: #fff;
+    font-family: "Roboto";
+    padding: 0 13px;
+    margin-top: 23px;
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 28px;
+    text-align: center;
+}
+
+.main .main_btn {
+    /*display: block;*/
+    margin: 0 auto;
+    /*margin-top: 573px;*/
+    /*height: 72px;
+    width: 313px;*/
+    /*box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.18);*/
+    /*border: 4px solid rgba(0, 0, 0, 0.23);*/
+    /*backgroud-image: linear-gradient(to top, #2798b9 0%, #3ab6da 100%);*/
+    text-align:center;
+    color: #FFFFFF;
+    /*font-size: 21px;*/
+    /*font-weight: 300;*/
+    /*line-height: 24px;*/
+    /*text-transform: uppercase;*/
+    cursor: pointer;
+}
+
+/*.next {
+    min-height: 604px;
+    background-color: #efefef;
+    padding: 85px 0 75px 0;
+}
+
+    .next .next_wrapper {
+        min-height: 604px;
+        background-color: #efefef;
+        padding: 85px 0 75px 0;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 45px;
+    }
+
+.next .next_wrapper .next_item {
+    width: 339px;
+    text-align: center;
+}
+
+.next .next_wrapper .next_item .next_btn {
+    display: block;
+    cursor: pointer;
+}*/
+
+
+
+/*body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}*/
+
+/* Set padding to keep content from hitting the edges */
+/*.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}*/
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+/*.dl-horizontal dt {
+    white-space: normal;
+}*/
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/

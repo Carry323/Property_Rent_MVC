@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Property_Rental_Management_Web_Site.Models.Leas>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MonthlyRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentMethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartLeaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndLeaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apartment.StreetName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Broker.BrokerFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.CustomerFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Owner.OwnerFirstName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MonthlyRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentMethod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fine)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartLeaseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndLeaseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apartment.StreetName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Broker.BrokerFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.CustomerFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owner.OwnerFirstName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LeaseId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LeaseId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LeaseId })
+        </td>
+    </tr>
+}
+
+</table>

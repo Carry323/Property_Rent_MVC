@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Property_Rental_Management_Web_Site.Models.Apartment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "Apartments1", FormMethod.Post))
+    {
+        <b>Search by:</b> @Html.RadioButton("searchBy", "Status", true) <text>Status</text>
+        @Html.RadioButton("searchBy", "City") <text> City </text>
+        <br />
+        @Html.TextBox("search")
+        <input type="submit" value="Search" />
+    }
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ApartmentNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StreetName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Province)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Floor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfBedrooms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfBathrooms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApartmentNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZipCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Province)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Floor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfBedrooms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfBathrooms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ApartmentId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ApartmentId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ApartmentId })
+            </td>
+        </tr>
+    }
+
+</table>

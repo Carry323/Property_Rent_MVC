@@ -1,0 +1,102 @@
+﻿@model Property_Rental_Management_Web_Site.Models.Broker
+
+@{
+    ViewBag.Title = "Welcome";
+}
+
+<body>
+    <h2>Welcome </h2>
+
+    <div>
+        <h4>Broker</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            @*<dt>
+            @Html.DisplayNameFor(model => model.BrokerFirstName)
+
+        </dt>
+
+
+
+        <dd>
+            @Html.DisplayFor(model => model.BrokerFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrokerLastName)
+
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrokerLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrokerEmail)
+
+        </dt>*@
+            <h4> @Session["BrokerEmail"]</h4>
+            <dd>
+                @Html.DisplayFor(model => model.BrokerEmail)
+            </dd>
+
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @*<input type="submit" value="Show your leases" class="btn btn-default" />*@
+                    <a href="@Url.Action("Index", "BrokerApartments")" class="btn btn-primary btn-lg">Search Appartments</a>
+                    @*<a href="@Url.Action("Detals", "LoginBroker")">Show my appartment</a>*@
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @*<input type="submit" value="Show your leases" class="btn btn-default" />*@
+                    <a href="@Url.Action("Index", "Leas")" class="btn btn-primary btn-lg">Search Leases</a>
+                    @*<a href="@Url.Action("Detals", "LoginBroker")">Show my appartment</a>*@
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @*<input type="submit" value="Show your leases" class="btn btn-default" />*@
+                    <a href="@Url.Action("Create", "Tenants")" class="btn btn-primary btn-lg">Create Tenant</a>
+                    @*<a href="@Url.Action("Detals", "LoginBroker")">Show my appartment</a>*@
+                </div>
+            </div>
+
+            <div>
+                <a href="@Url.Action("LogOut", "LoginBroker")">LogOut</a>
+
+            </div>
+
+            @*<td>
+
+            @ViewBag.BrokerFirstName
+
+        </td>*@
+            @*<dt>
+            @Html.DisplayNameFor(model => model.BrokerPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrokerPassword)
+        </dd>*@
+
+        </dl>
+    </div>
+    @*<p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.BrokerId }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>*@
+
+</body>
